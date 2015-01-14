@@ -2,6 +2,7 @@ package com.example.helloworld;
 
 import com.example.helloworld.core.Patient;
 import com.example.helloworld.core.PatientDAO;
+import com.example.helloworld.resources.PatientCreateResource;
 import io.dropwizard.Application;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
@@ -40,9 +41,11 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
                 configuration.getTemplate(),
                 configuration.getDefaultName(),
                 dao);
+      final PatientCreateResource patientResource = new PatientCreateResource(dao);
         final TemplateHealthCheck healthCheck =
                 new TemplateHealthCheck(configuration.getTemplate());
         environment.healthChecks().register("template", healthCheck);
       environment.jersey().register(resource);
+      environment.jersey().register(patientResource);
     }
 }

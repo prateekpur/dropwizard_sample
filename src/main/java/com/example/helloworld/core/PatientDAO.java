@@ -15,6 +15,7 @@ public class PatientDAO extends AbstractDAO<Patient> {
   }
 
   public int create(Patient person) {
+    System.out.println(person);
     return persist(person).getPatientId();
   }
 

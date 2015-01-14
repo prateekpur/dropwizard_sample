@@ -1,10 +1,8 @@
 package com.example.helloworld.resources;
 
+import com.codahale.metrics.annotation.Timed;
 import com.example.helloworld.core.Patient;
 import com.example.helloworld.core.PatientDAO;
-import com.example.helloworld.core.Saying;
-import com.google.common.base.Optional;
-import com.codahale.metrics.annotation.Timed;
 import io.dropwizard.hibernate.UnitOfWork;
 
 import javax.ws.rs.GET;

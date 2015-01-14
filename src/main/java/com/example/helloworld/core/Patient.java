@@ -1,9 +1,6 @@
 package com.example.helloworld.core;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "PATIENT")
@@ -16,13 +13,13 @@ public class Patient implements java.io.Serializable {
   public Patient() {
   }
 
-  public Patient(int patientId, String patientName, String address) {
-      this.patientId = patientId;
+  public Patient( String patientName, String address) {
       this.patientName = patientName;
       this.address = address;
   }
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "PATIENTID", unique = true, nullable = false, precision = 5, scale = 0)
   public int getPatientId() {
     return this.patientId;
